@@ -19,12 +19,12 @@ name: image-compress
 # access 是当前应用所需要的密钥信息配置：
 # 密钥配置可以参考：https://www.serverless-devs.com/serverless-devs/command/config
 # 密钥使用顺序可以参考：https://www.serverless-devs.com/serverless-devs/tool#密钥使用顺序与规范
-access: "undefined"
+access: "{{ access }}"
 
 vars: # 全局变量
-  region: "cn-hangzhou"
+  region: "{{ region }}"
   service:
-    name: "image-compress"
+    name: "{{ serviceName }}"
     description: 'image compress'
     role: "acs:ram::1702981446385561:role/aliyunfcdefaultrole"
 
@@ -38,7 +38,7 @@ services:
       region: ${vars.region} # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
       service: ${vars.service}
       function:
-        name: "image-compress"
+        name: "{{ functionName }}"
         description: 'image compress'
         codeUri: './code'
         runtime: python3.9
