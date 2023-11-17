@@ -26,7 +26,7 @@ vars: # 全局变量
   service:
     name: "{{ serviceName }}"
     description: 'image compress'
-    role: "acs:ram::1702981446385561:role/aliyunfcdefaultrole"
+    role: "{{ roleArn }}"
 
 services:
   framework: # 业务名称/模块名称
