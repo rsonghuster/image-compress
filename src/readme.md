@@ -1,5 +1,5 @@
 
-> 注：当前项目为 Serverless Devs 应用，由于应用中会存在需要初始化才可运行的变量（例如应用部署地区、函数名等等），所以**不推荐**直接 Clone 本仓库到本地进行部署或直接复制 s.yaml 使用，**强烈推荐**通过 `s init --project ${模版名称}` 的方法或应用中心进行初始化，详情可参考[部署 & 体验](#部署--体验) 。
+> 注：当前项目为 Serverless Devs 应用，由于应用中会存在需要初始化才可运行的变量（例如应用部署地区、函数名等等），所以**不推荐**直接 Clone 本仓库到本地进行部署或直接复制 s.yaml 使用，**强烈推荐**通过 `s init ${模版名称}` 的方法或应用中心进行初始化，详情可参考[部署 & 体验](#部署--体验) 。
 
 # image-compress-v3 帮助文档
 <p align="center" class="flex justify-center">
@@ -16,7 +16,7 @@
 
 <description>
 
-使用函数计算进行图片压缩
+本案例将图片压缩服务，封装成一个 python 的函数，快速创建并部署到阿里云函数计算 FC。
 
 </description>
 
@@ -34,29 +34,17 @@
 
 ## 前期准备
 
-使用该项目，您需要有开通以下服务：
+使用该项目，您需要有开通以下服务并拥有对应权限：
 
 <service>
 
 
 
-| 服务 |  备注  |
-| --- |  --- |
-| 函数计算 FC |  图片压缩函数部署在函数计算 |
-| 对象存储 OSS |  读取的图片位于 OSS， 压缩后处理后图片需要保存回 OSS |
+| 服务/业务 |  权限  | 相关文档 |
+| --- |  --- | --- |
+| 函数计算 |  AliyunFCFullAccess | [帮助文档](https://help.aliyun.com/product/2508973.html) [计费文档](https://help.aliyun.com/document_detail/2512928.html) |
 
 </service>
-
-推荐您拥有以下的产品权限 / 策略：
-<auth>
-
-
-
-| 服务/业务 |  权限 |  备注  |
-| --- |  --- |   --- |
-| 函数计算 | AliyunFCFullAccess |  创建或者更新图片压缩函数 |
-
-</auth>
 
 <remark>
 
@@ -82,16 +70,18 @@
     
 - 通过 [Serverless Devs Cli](https://www.serverless-devs.com/serverless-devs/install) 进行部署：
   - [安装 Serverless Devs Cli 开发者工具](https://www.serverless-devs.com/serverless-devs/install) ，并进行[授权信息配置](https://docs.serverless-devs.com/fc/config) ；
-  - 初始化项目：`s init --project image-compress-v3 -d image-compress-v3`
+  - 初始化项目：`s init image-compress-v3 -d image-compress-v3`
   - 进入项目，并进行项目部署：`cd image-compress-v3 && s deploy -y`
    
 </deploy>
 
-## 应用详情
+## 案例介绍
 
 <appdetail id="flushContent">
 
-我们把图片压缩逻辑封装成一个 python 的函数，可以快速发布函数计算平台，从而得到一个弹性高可用的图片压缩服务。
+本案例将图片压缩服务，封装成一个 python 的函数，快速创建并部署到阿里云函数计算 FC。
+
+通过本案例，可以得到一个弹性高可用的图片压缩服务。
 
 **其中：**
 
@@ -99,16 +89,19 @@
 
 - 对于其他格式， 使用 wand (ImageMagick) 对图片进行压缩处理
 
-
-通过本应用，您可以部署一个图片压缩服务，比如 PNG 图片压缩效果如下：
+您可以部署一个图片压缩服务，比如 PNG 图片压缩效果如下：
 
 ![](http://image.editor.devsapp.cn/evBw7lh8ktv6xDBzSSzvjr1ykchAF9hG41gf1ek1sk8tr4355A/7bExa4bcCCEEC8BwatAb)
 
+通过 Serverless 开发平台，您只需要几步，就可以体验图片压缩服务，并享受 Serverless 架构带来的降本提效的技术红利。
+
 </appdetail>
 
-## 使用文档
+## 使用流程
 
 <usedetail id="flushContent">
+
+### 查看部署的案例
 
 项目部署完成后， 进入应用的环境详情，跳转到指定的压缩函数：
 
@@ -134,7 +127,16 @@
 - quality: 压缩质量 0-100, 默认值为 75
 - dst: 保存压缩后图片的目录
 
+### 二次开发
+
+您可以通过云端控制台的开发功能进行二次开发。如果您之前是在本地创建的项目案例，也可以在本地项目目录`image-compress-v3`文件夹下，对项目进行二次开发。开发完成后，可以通过`s deploy`进行快速部署。
+
 </usedetail>
+
+## 注意事项
+
+<matters id="flushContent">
+</matters>
 
 
 <devgroup>
