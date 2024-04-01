@@ -107,7 +107,7 @@
 
 ![](http://image.editor.devsapp.cn/khkZiuj24dFrSiCdAe9cyr1grr6hrArhCGzvvd2t3l7huywAC8/1AZDeAblFG2DradAkgSF.png)
 
-对该函数就行调用， 其中 payload 是如下 json 格式
+对该函数进行调用， 其中 payload 是如下 json 格式
 
 ```
 {
@@ -121,11 +121,14 @@
 
 其中 
 
-- bucket: bucket 名字
-- region: 参数是可选的， 不填默认为和 FC 函数相同的 region
-- image: 表示图片在 bucket 上的 objectkey
-- quality: 压缩质量 0-100, 默认值为 75
-- dst: 保存压缩后图片的目录
+| 参数 | 是否必填 | 描述 |
+|---------|-----------------|----------------|
+| bucket | 必填 | image 所在的 bucket 名 |
+| region | 可选 | 地域，不填默认为和 FC 函数相同的 region |
+| image | 必填 | 表示图片在 bucket 上的 objectkey |
+| quality | 可选 | 压缩质量 0-100, 默认值为 75 |
+| dst | 必填 | 保存压缩后图片的目录 |
+
 
 ### 二次开发
 
