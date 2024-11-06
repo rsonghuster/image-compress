@@ -33,7 +33,13 @@ def handler(event, context):
             img.compression_quality = quality
             img.save(filename=new_image_path)
     dst = evt['dst']
-    bucket.put_object_from_file(os.path.join(dst, filename), new_image_path)
+    result = bucket.put_object_from_file(os.path.join(dst, filename), new_image_path)
 
     os.remove(image_path)
     os.remove(new_image_path)
+    if result.status == 200:
+        print("upload to oss success!")
+        return {"code": "Success"}
+    else:
+        print("upload fail, error code %s " % result.status)
+        return {"code": "Failed"}
